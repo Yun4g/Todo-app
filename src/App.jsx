@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import CompletedTaskSection from './completedListComponents/completedTask';
 
@@ -6,6 +6,7 @@ function App() {
     const [inputValue, setInputValue] = useState('');
     const [tasks, setTasks] = useState([]);
     const [completedTasks, setCompletedTasks] = useState([]); // Renamed for clarity
+    
 
     const handleInputValue = (e) => {
         setInputValue(e.target.value);
@@ -44,6 +45,22 @@ function App() {
         const newCompletedTasks = updatedTasks.filter(task => task.completed);
         setCompletedTasks(newCompletedTasks); // Set completed tasks state
     };
+
+
+    useEffect(() => {
+      const storedTasks = localStorage.getItem('tasks');
+      if (storedTasks) {
+          setTasks(JSON.parse(storedTasks));
+      }
+  }, []);
+
+  // Save tasks to local storage whenever tasks change
+  useEffect(() => {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      const newCompletedTasks = tasks.filter(task => task.completed);
+      setCompletedTasks(newCompletedTasks);
+  }, [tasks]);
+
 
     return (
         <main>
