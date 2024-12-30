@@ -108,8 +108,11 @@ ol li{
 
 .taskList{
   display: flex;
+  word-break: break-all;
   align-items: center;
   gap: 3px;
+  width: 100%;
+  
 }
 .checkbox {
   width: 20px; 
@@ -124,7 +127,14 @@ ol li{
 
 
 
+.list{
+  display: flex;
+  
+  align-items: center ;
+  justify-content: center;
+  width: 100%;
 
+}
 
 label{
   font-size: 14px;
@@ -168,4 +178,15 @@ label{
   h2{
     font-size:30px;
   }
+} 
+
+
+@media (max-width: 323px) {
+
+  section{
+    width: 18rem;
+   
+  }
+
+ 
 } 

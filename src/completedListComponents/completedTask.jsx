@@ -22,6 +22,8 @@ function CompletedTaskSection({ transferTask }) {
 }
 
 
+
+
 CompletedTaskSection.propTypes = {
     transferTask: PropTypes.arrayOf(
         PropTypes.shape({
